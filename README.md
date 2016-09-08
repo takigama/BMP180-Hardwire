@@ -16,7 +16,7 @@ All that changes is where you used to go:
 
 
 You now go 
-> &#35;include &lt;SFE_BMP180_hw.h&gt;
+> &#35;include &lt;SFE_BMP180_wb.h&gt;
 > 
 > HardWire HWire(1, I2C_FAST_MODE);
 
@@ -24,7 +24,7 @@ You now go
 
 If you want to use bus 2, you just go:
 
-> &#35;include &lt;SFE_BMP180_hw.h&gt;
+> &#35;include &lt;SFE_BMP180_wb.h&gt;
 > 
 > HardWire HWire(2, I2C_FAST_MODE);
 
