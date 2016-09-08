@@ -15,7 +15,7 @@ All that changes is where you used to go:
 
 
 You now go 
-> #include <SFE_BMP180_hw.h>
+> &#35;include &lt;SFE_BMP180_hw.h&gt;
 > 
 > HardWire HWire(1, I2C_FAST_MODE);
 > SFE_BMP180_hw pressure(&HWire);
