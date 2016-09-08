@@ -1,5 +1,5 @@
 /*
-	SFE_BMP180_hw.h
+	SFE_BMP180_wb.h
 	Bosch BMP180 pressure sensor library for the Arduino microcontroller
 	Mike Grusin, SparkFun Electronics
 
@@ -17,8 +17,8 @@
 	buy me a (root) beer someday.
 */
 
-#ifndef SFE_BMP180_hw_h
-#define SFE_BMP180_hw_h
+#ifndef SFE_BMP180_wb_h
+#define SFE_BMP180_wb_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
@@ -26,12 +26,12 @@
 #include "WProgram.h"
 #endif
 
-#include <HardWire.h>
+#include <WireBase.h>
 
-class SFE_BMP180_hw
+class SFE_BMP180_wb
 {
 	public:
-		SFE_BMP180_hw(HardWire *hw); // base type
+		SFE_BMP180_wb(WireBase *hw); // base type
 
 		char begin();
 			// call pressure.begin() to initialize BMP180 before use
@@ -108,7 +108,7 @@ class SFE_BMP180_hw
 		uint16_t AC4,AC5,AC6; 
 		double c5,c6,mc,md,x0,x1,x2,y0,y1,y2,p0,p1,p2;
 		char _error;
-		HardWire *myhw;
+		WireBase *myhw;
 };
 
 #define BMP180_ADDR 0x77 // 7-bit address

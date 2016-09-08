@@ -1,11 +1,10 @@
-Sparkfun BMP180 Library Port To Hardwire
+Sparkfun BMP180 Library Port To WireBase
 ========================================
 
 Needed a version of this that uses hardwire
 and that can choose easily betwen the two i2c
-busses that are available.
-
-Mostly for STM32
+busses that are available. Using wirebase
+makes it fairly agnosttic
 
 All that changes is where you used to go:
 

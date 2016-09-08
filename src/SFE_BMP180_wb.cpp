@@ -1,5 +1,5 @@
 /*
-	SFE_BMP180_hw.cpp
+	SFE_BMP180_wb.cpp
 	Bosch BMP180 pressure sensor library for the Arduino microcontroller
 	Mike Grusin, SparkFun Electronics
 
@@ -18,20 +18,20 @@
 	buy me a (root) beer someday.
 */
 
-#include <SFE_BMP180_hw.h>
-#include <HardWire.h>
+#include <SFE_BMP180_wb.h>
+#include <WireBase.h>
 #include <stdio.h>
 #include <math.h>
 
 
-SFE_BMP180_hw::SFE_BMP180_hw(HardWire *hw)
+SFE_BMP180_wb::SFE_BMP180_wb(WireBase *hw)
 // Base library type
 {
 	myhw = hw;
 }
 
 
-char SFE_BMP180_hw::begin()
+char SFE_BMP180_wb::begin()
 // Initialize library for subsequent pressure measurements
 {
 	double c3,c4,b1;
@@ -138,7 +138,7 @@ char SFE_BMP180_hw::begin()
 }
 
 
-char SFE_BMP180_hw::readInt(char address, int16_t &value)
+char SFE_BMP180_wb::readInt(char address, int16_t &value)
 // Read a signed integer (two bytes) from device
 // address: register to start reading (plus subsequent register)
 // value: external variable to store data (function modifies value)
@@ -157,7 +157,7 @@ char SFE_BMP180_hw::readInt(char address, int16_t &value)
 }
 
 
-char SFE_BMP180_hw::readUInt(char address, uint16_t &value)
+char SFE_BMP180_wb::readUInt(char address, uint16_t &value)
 // Read an unsigned integer (two bytes) from device
 // address: register to start reading (plus subsequent register)
 // value: external variable to store data (function modifies value)
@@ -175,7 +175,7 @@ char SFE_BMP180_hw::readUInt(char address, uint16_t &value)
 }
 
 
-char SFE_BMP180_hw::readBytes(unsigned char *values, char length)
+char SFE_BMP180_wb::readBytes(unsigned char *values, char length)
 // Read an array of bytes from device
 // values: external array to hold data. Put starting register in values[0].
 // length: number of bytes to read
@@ -199,7 +199,7 @@ char SFE_BMP180_hw::readBytes(unsigned char *values, char length)
 }
 
 
-char SFE_BMP180_hw::writeBytes(unsigned char *values, char length)
+char SFE_BMP180_wb::writeBytes(unsigned char *values, char length)
 // Write an array of bytes to device
 // values: external array of data to write. Put starting register in values[0].
 // length: number of bytes to write
@@ -217,7 +217,7 @@ char SFE_BMP180_hw::writeBytes(unsigned char *values, char length)
 }
 
 
-char SFE_BMP180_hw::startTemperature(void)
+char SFE_BMP180_wb::startTemperature(void)
 // Begin a temperature reading.
 // Will return delay in ms to wait, or 0 if I2C error
 {
@@ -233,7 +233,7 @@ char SFE_BMP180_hw::startTemperature(void)
 }
 
 
-char SFE_BMP180_hw::getTemperature(double &T)
+char SFE_BMP180_wb::getTemperature(double &T)
 // Retrieve a previously-started temperature reading.
 // Requires begin() to be called once prior to retrieve calibration parameters.
 // Requires startTemperature() to have been called prior and sufficient time elapsed.
@@ -271,7 +271,7 @@ char SFE_BMP180_hw::getTemperature(double &T)
 }
 
 
-char SFE_BMP180_hw::startPressure(char oversampling)
+char SFE_BMP180_wb::startPressure(char oversampling)
 // Begin a pressure reading.
 // Oversampling: 0 to 3, higher numbers are slower, higher-res outputs.
 // Will return delay in ms to wait, or 0 if I2C error.
@@ -311,7 +311,7 @@ char SFE_BMP180_hw::startPressure(char oversampling)
 }
 
 
-char SFE_BMP180_hw::getPressure(double &P, double &T)
+char SFE_BMP180_wb::getPressure(double &P, double &T)
 // Retrieve a previously started pressure reading, calculate abolute pressure in mbars.
 // Requires begin() to be called once prior to retrieve calibration parameters.
 // Requires startPressure() to have been called prior and sufficient time elapsed.
@@ -361,7 +361,7 @@ char SFE_BMP180_hw::getPressure(double &P, double &T)
 }
 
 
-double SFE_BMP180_hw::sealevel(double P, double A)
+double SFE_BMP180_wb::sealevel(double P, double A)
 // Given a pressure P (mb) taken at a specific altitude (meters),
 // return the equivalent pressure (mb) at sea level.
 // This produces pressure readings that can be used for weather measurements.
@@ -370,7 +370,7 @@ double SFE_BMP180_hw::sealevel(double P, double A)
 }
 
 
-double SFE_BMP180_hw::altitude(double P, double P0)
+double SFE_BMP180_wb::altitude(double P, double P0)
 // Given a pressure measurement P (mb) and the pressure at a baseline P0 (mb),
 // return altitude (meters) above baseline.
 {
@@ -378,7 +378,7 @@ double SFE_BMP180_hw::altitude(double P, double P0)
 }
 
 
-char SFE_BMP180_hw::getError(void)
+char SFE_BMP180_wb::getError(void)
 	// If any library command fails, you can retrieve an extended
 	// error code using this command. Errors are from the wire library: 
 	// 0 = Success
