@@ -2,7 +2,8 @@ Sparkfun BMP180 Library Port To Hardwire
 ========================================
 
 Needed a version of this that uses hardwire
-and that can choose with i2c bus to use
+and that can choose easily betwen the two i2c
+busses that are available.
 
 Mostly for STM32
 
