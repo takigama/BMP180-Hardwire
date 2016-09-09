@@ -63,6 +63,7 @@ V1.1.2 Updates for Arduino 1.6.4 5/2015
 // (Wire is a standard library included with Arduino.):
 // You will need to create an SFE_BMP180 object, here called "pressure":
 #include <SFE_BMP180_wb.h>
+#include <HardWire.h>
 
 //HardWire HWire(2, I2C_FAST_MODE); // <--- uncomment for bus 2
 HardWire HWire(1, I2C_FAST_MODE); // <-- comment out if using bus 2

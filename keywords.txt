@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-SFE_BMP180_hw	KEYWORD1
+SFE_BMP180_wb	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
